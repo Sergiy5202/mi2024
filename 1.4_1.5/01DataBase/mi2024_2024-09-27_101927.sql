@@ -173,3 +173,50 @@ ALTER TABLE ONLY public.documents
 -- PostgreSQL database dump complete
 --
 
+ 
+from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/your_database'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Task(db.Model):
+    task_id = db.Column(db.Integer, primary_key=True)
+    task_name = db.Column(db.String, nullable=False)
+    due_date = db.Column(db.Date)
+
+@app.route('/api/tasks', methods=['GET'])
+def get_tasks():
+    tasks = Task.query.all()
+    return jsonify([{'task_id': task.task_id, 'task_name': task.task_name, 'due_date': task.due_date.isoformat()} for task in tasks])
+
+@app.route('/api/tasks', methods=['POST'])
+def add_task():
+    data = request.json
+    new_task = Task(task_name=data['task_name'], due_date=data['due_date'])
+    db.session.add(new_task)
+    db.session.commit()
+    return jsonify({'task_id': new_task.task_id}), 201
+
+@app.route('/api/tasks/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return '', 204
+
+@app.route('/')
+def index():
+    tasks = Task.query.all()
+    return render_template('index.html', tasks=tasks)
+
+@app.route('/add', methods=['POST'])
+def add():
+    task_name = request.form['task_name']
+    due_date = request.form['due_date']
+    new_task = Task(task_name=task_name, due_date=due_date)
+    db.session.add(new_task)
+    db.session.commit()
+    return redirect(url_for

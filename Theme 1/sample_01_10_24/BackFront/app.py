@@ -4,16 +4,16 @@ from flask_cors import CORS
 
 # Параметри підключення до бази даних
 DB_USER = 'postgres'
-DB_PASSWORD = 'admin'
+DB_PASSWORD = 'Sergiy2024'
 DB_HOST = 'localhost'
-DB_PORT = '5434'  # Вказуємо порт
-DB_NAME = 'sample15'
+DB_PORT = '5432'  # Вказуємо порт
+DB_NAME = 'sample10'
 
 app = Flask(__name__)
 CORS(app)
 
 # Конфігурація бази даних з використанням порту 5434
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgres'//{'Sergiy2024'}@'localhost'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

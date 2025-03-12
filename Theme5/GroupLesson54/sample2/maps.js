@@ -1,3 +1,14 @@
+var greenIcon = L.icon({
+    iconUrl: './img/tankUA.svg',
+    
+
+    iconSize:     [38, 95], // size of the icon
+    
+    iconAnchor:   [11, 47], // point of the icon which will correspond to marker's location
+   
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     // Ініціалізація карти
     const map = L.map("map").setView([50.4501, 30.5234], 6); // Координати Києва
@@ -8,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }).addTo(map);
 
     // Додавання маркерів для міст
-    L.marker([50.4501, 30.5234]).addTo(map)
+    L.marker([50.4501, 30.5234], {icon: greenIcon}).addTo(map)
         .bindPopup("Київ - столиця України");
 
     L.marker([49.8397, 24.0297]).addTo(map)

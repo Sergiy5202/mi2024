@@ -1,3 +1,5 @@
+let my_data = [30, 40, 20];
+
 document.addEventListener("DOMContentLoaded", function () {
     const ctxLine = document.getElementById("lineChart").getContext("2d");
     new Chart(ctxLine, {
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data: {
             labels: ["Молодший", "Середній", "Старший"],
             datasets: [{
-                data: [50, 40, 30],
+                data: my_data,
                 backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
             }]
         }

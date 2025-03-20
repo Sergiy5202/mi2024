@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<units created="2025-03-19 17:04:19">
+  <unit>
+    <name>Маркетинг</name>
+    <count>15</count>
+    <status>active</status>
+  </unit>
+  <unit>
+    <name>Розробка</name>
+    <count>25</count>
+    <status>active</status>
+  </unit>
+  <unit>
+    <name>Продажі</name>
+    <count>10</count>
+    <status>active</status>
+  </unit>
+  <unit>
+    <name>HR</name>
+    <count>5</count>
+    <status>active</status>
+  </unit>
+  <unit>
+    <name>Фінанси</name>
+    <count>8</count>
+    <status>active</status>
+  </unit>
+  <unit>
+    <name>Підтримка</name>
+    <count>12</count>
+    <status>inactive</status>
+  </unit>
+</units>
